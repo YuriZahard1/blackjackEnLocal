@@ -1,0 +1,209 @@
+/* ==========================================================================
+   COMPONENTES reutilizables: botones, formularios, badges, cartas, modales
+   ========================================================================== */
+
+/* ───────── Botones (sirven para <button> y <a>) ───────── */
+.button {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: 0 var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+}
+.button:hover:not(:disabled) { transform: translateY(-2px); }
+.button--primary { color: #102018; background: var(--color-gold); box-shadow: 0 6px 18px rgba(212, 175, 55, 0.2); }
+.button--primary:hover:not(:disabled) { background: var(--color-gold-light); }
+.button--secondary { background: transparent; border-color: rgba(255, 255, 255, 0.35); }
+.button--secondary:hover:not(:disabled) { border-color: var(--color-gold); color: var(--color-gold-light); }
+.button--danger { background: var(--color-danger); color: var(--color-white); }
+.button:disabled { opacity: 0.42; cursor: not-allowed; transform: none; }
+.button--full { width: 100%; }
+
+.text-link {
+  padding: 0;
+  color: var(--color-felt-dark);
+  background: transparent;
+  border: 0;
+  font-weight: 700;
+}
+
+/* ───────── Badges de resultado ───────── */
+.badge {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  border-radius: var(--radius-round);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.badge i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.badge--win { color: var(--color-success); background: rgba(66, 199, 138, 0.1); }
+.badge--loss { color: #ff8085; background: rgba(230, 92, 99, 0.1); }
+.badge--draw { color: var(--color-draw); background: rgba(228, 188, 78, 0.1); }
+
+/* ───────── Formularios (campo + mensaje de error propio) ───────── */
+.field { display: grid; align-content: start; gap: 7px; }
+.field label { color: inherit; font-size: 0.78rem; font-weight: 700; }
+.field input:not([type="checkbox"]),
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 var(--space-2);
+  color: var(--color-ink);
+  background: var(--color-white);
+  border: 1px solid var(--color-line-light);
+  border-radius: var(--radius-sm);
+}
+.field textarea { min-height: 120px; padding: 12px var(--space-2); resize: vertical; }
+.field input::placeholder,
+.field textarea::placeholder { color: #87938f; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--color-felt);
+  box-shadow: 0 0 0 3px rgba(11, 110, 79, 0.12);
+  outline: none;
+}
+.field--error input:not([type="checkbox"]),
+.field--error select,
+.field--error textarea { border-color: var(--color-danger); }
+.field--success input:not([type="checkbox"]),
+.field--success select,
+.field--success textarea { border-color: var(--color-felt); }
+
+.field__message { --message-color: var(--color-danger-dark); margin: 0; color: var(--message-color); font-size: 0.75rem; font-weight: 600; }
+.field--success .field__message { --message-color: var(--color-felt); }
+.field__message span {
+  display: inline-grid;
+  width: 16px;
+  height: 16px;
+  place-content: center;
+  margin-right: 3px;
+  color: var(--color-white);
+  background: var(--message-color);
+  border-radius: 50%;
+  font-size: 10px;
+  line-height: 1;
+}
+.field__hint { margin: 0; color: var(--color-ink-muted); font-size: 0.72rem; }
+
+.field--checkbox label { font-weight: 400; }
+.checkbox { display: flex; align-items: flex-start; gap: 10px; color: var(--color-ink-soft); font-size: 0.78rem; }
+.checkbox input { width: 18px; height: 18px; flex: 0 0 auto; accent-color: var(--color-felt); }
+
+.form-error {
+  margin: 0;
+  padding: 10px 12px;
+  color: var(--color-danger-dark);
+  background: rgba(230, 92, 99, 0.12);
+  border: 1px solid rgba(230, 92, 99, 0.4);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ───────── Cartas de baraja ───────── */
+.playing-card {
+  width: 112px;
+  height: 158px;
+  flex: 0 0 auto;
+  position: relative;
+  padding: 9px;
+  color: #151c1a;
+  background: #fffefa;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 9px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+}
+.playing-card--red { color: #c72d3b; }
+.card-corner { display: grid; justify-items: center; width: fit-content; font-family: var(--font-display); line-height: 1; }
+.card-corner strong { font-size: 1.35rem; }
+.card-corner span { font-size: 1rem; }
+.card-suit { position: absolute; inset: 0; display: grid; place-content: center; font-size: 2.6rem; }
+.playing-card--back {
+  display: grid;
+  place-content: center;
+  color: var(--color-gold);
+  background: repeating-linear-gradient(45deg, #092b24, #092b24 5px, #0c4034 5px, #0c4034 10px);
+  border: 4px solid #fffefa;
+  text-align: center;
+}
+.playing-card--back span { font: 700 2rem var(--font-display); }
+.playing-card--back i { font-style: normal; }
+.playing-card--fresh { animation: deal-card 0.42s ease-out; }
+@keyframes deal-card {
+  from { opacity: 0; transform: translateY(-24px) rotate(4deg); }
+  to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+
+kbd {
+  padding: 2px 5px;
+  color: inherit;
+  background: rgba(0, 0, 0, 0.14);
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font: 600 0.6rem var(--font-body);
+  opacity: 0.7;
+}
+
+/* ───────── Modales ───────── */
+.modal-backdrop {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  padding: var(--space-2);
+  display: grid;
+  place-items: center;
+  background: rgba(1, 12, 10, 0.78);
+  backdrop-filter: blur(7px);
+}
+.modal {
+  width: min(100%, 540px);
+  max-height: 90vh;
+  overflow: auto;
+  color: var(--color-ink);
+  background: var(--color-ivory);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-high);
+}
+.modal__header { padding: var(--space-3); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #d8dfdc; }
+.modal__header h2 { margin: 0; font-size: 1.65rem; }
+.icon-button { width: 42px; height: 42px; color: var(--color-ink); background: transparent; border: 1px solid #ccd5d1; border-radius: 50%; font-size: 1.5rem; }
+.modal__body { padding: var(--space-3); color: #4e5c56; }
+.modal__actions { padding: var(--space-3); display: flex; flex-direction: row; justify-content: flex-end; gap: var(--space-1); border-top: 1px solid #d8dfdc; }
+.modal__actions .button--secondary { color: var(--color-ink); border-color: #aab5b0; }
+.modal__body > p:last-child { margin-bottom: 0; }
+
+.rules-list { display: grid; gap: var(--space-3); }
+.rules-list > div { display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); }
+.rules-list > div > span { color: var(--color-gold); font: 700 1.5rem var(--font-display); }
+.rules-list p { margin: 0; font-size: 0.85rem; }
+.rules-list strong { display: block; margin-bottom: 3px; color: var(--color-ink); }
+
+.result-icon {
+  width: 86px;
+  height: 86px;
+  margin: 0 auto var(--space-3);
+  display: grid;
+  place-content: center;
+  color: var(--color-night);
+  background: var(--color-gold);
+  border-radius: 50%;
+  font: 700 2rem var(--font-display);
+}
+.result-icon--loss { color: var(--color-white); background: var(--color-danger); }
+.result-icon--draw { background: var(--color-draw); }
+.hand-summary { color: var(--color-felt-dark); font-size: 0.76rem; font-weight: 700; text-align: center; }
+.modal__body .result-icon ~ p { text-align: center; }

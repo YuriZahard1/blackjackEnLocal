@@ -1,0 +1,98 @@
+/* ==========================================================================
+   RESPONSIVE (Media Queries)
+   Se parte del diseño de escritorio (layout.css) y se ADAPTA hacia abajo
+   con max-width. Puntos de ruptura:
+
+     ≤ 1099px  → portátil pequeño / tablet horizontal
+     ≤  767px  → tablet vertical y móvil
+     ≤  479px  → móvil pequeño
+   ========================================================================== */
+
+/* ───────── Tablet horizontal (≤ 1099px) ───────── */
+@media (max-width: 1099px) {
+  .match-grid { grid-template-columns: repeat(2, 1fr); }
+  .detail-grid { grid-template-columns: 1fr; }
+  .auth-intro { padding: var(--space-6); }
+  .swatches { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ───────── Tablet vertical y móvil (≤ 767px) ───────── */
+@media (max-width: 767px) {
+  .content-shell, .page-shell, .footer-inner { width: min(var(--container), calc(100% - 32px)); }
+  .header-inner { width: min(1280px, calc(100% - 32px)); }
+
+  /* Menú hamburguesa */
+  .menu-toggle { display: grid; }
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    padding: var(--space-2);
+    background: var(--color-night-soft);
+    border-bottom: 1px solid var(--color-line);
+    box-shadow: var(--shadow-mid);
+  }
+  .main-nav.main-nav--open { display: grid; }
+  .main-nav a[aria-current="page"] { box-shadow: none; border-radius: var(--radius-sm); background: rgba(255, 255, 255, 0.07); }
+  .main-nav .nav-user { max-width: none; min-height: 48px; padding: 0 var(--space-2); }
+  .main-nav .nav-login { margin-left: 0; justify-content: center; }
+
+  /* Hero */
+  .hero { min-height: 610px; padding-block: var(--space-8); grid-template-columns: 1fr; }
+  .hero-cards { min-height: 280px; }
+  .hero-cards .playing-card { width: 96px; height: 138px; padding: 9px; }
+  .hero-cards .card-corner strong { font-size: 1.35rem; }
+  .hero-cards .card-corner span { font-size: 1rem; }
+  .hero-cards .card-suit { font-size: 2.6rem; }
+  .twenty-one { font-size: 9rem; }
+
+  /* Dashboard */
+  .section-heading, .history-heading { flex-direction: column; align-items: stretch; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat { padding: var(--space-3); }
+  .match-grid { grid-template-columns: 1fr; }
+  .search { width: 100%; }
+
+  /* Pie */
+  .footer-inner { grid-template-columns: 1fr; }
+
+  /* Autenticación */
+  .auth-page { grid-template-columns: 1fr; }
+  .auth-intro { min-height: 330px; padding: var(--space-3); gap: var(--space-3); }
+  .auth-form-wrap { padding: var(--space-6) var(--space-2); }
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Crear y detalle */
+  .panel { padding: var(--space-3); }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-actions { flex-direction: column-reverse; align-items: stretch; }
+  .detail-header { flex-direction: column; align-items: flex-start; }
+  .scoreline--large strong { font-size: 3rem; }
+
+  /* Mesa de juego */
+  .table { min-height: 610px; }
+  .hand-area { flex-direction: column; }
+  .hand-area--player { flex-direction: column-reverse; justify-content: flex-end; }
+  .playing-card { width: 96px; height: 138px; }
+  .cards-row .playing-card + .playing-card { margin-left: -34px; }
+
+  /* Modales */
+  .modal__actions { flex-direction: column-reverse; }
+
+  /* Guía de estilos */
+  .swatches { grid-template-columns: repeat(2, 1fr); }
+  .style-fields { grid-template-columns: 1fr; }
+}
+
+/* ───────── Móvil pequeño (≤ 479px) ───────── */
+@media (max-width: 479px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--space-1); }
+  .stat strong { font-size: 1.6rem; }
+  .hero h1 { font-size: 2.5rem; }
+  .game-actions .button { min-width: calc(50% - var(--space-1)); }
+  .scoreline--large strong { font-size: 2.4rem; }
+  .detail-list > div { flex-direction: column; gap: 2px; }
+  .detail-list dd { text-align: left; }
+}

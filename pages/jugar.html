@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mesa de Blackjack: pide carta, plántate, dobla o divide contra la banca.">
+  <title>Jugar · Veintiuno</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-access="private" data-root="../" data-nav="jugar">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html" aria-label="Veintiuno, ir al inicio">
+        <span class="brand__mark" aria-hidden="true">A♠</span>
+        <span>Veintiuno</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="../index.html" data-nav="inicio">Inicio</a>
+        <a href="jugar.html" data-nav="jugar">Jugar</a>
+        <a href="crear.html" data-nav="crear">Registrar partida</a>
+        <button type="button" data-action="rules">Reglas</button>
+        <span class="nav-user" data-user-name>Jugador</span>
+        <button type="button" class="nav-login" data-action="logout">Cerrar sesión</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="game-page">
+    <h1 class="sr-only">Mesa de Blackjack</h1>
+    <div class="game-toolbar">
+      <p><span class="live-dot"></span> Partida en curso</p>
+      <button id="btn-leave" type="button">Abandonar partida</button>
+    </div>
+    <section id="table" class="table" aria-label="Mesa de Blackjack"></section>
+    <div class="game-actions">
+      <button id="btn-stand" class="button button--secondary" type="button">Plantarse <kbd>S</kbd></button>
+      <button id="btn-double" class="button button--secondary" type="button">Doblar</button>
+      <button id="btn-split" class="button button--secondary" type="button">Dividir</button>
+      <button id="btn-hit" class="button button--primary" type="button">Pedir carta <kbd>P</kbd></button>
+      <button id="btn-new" class="button button--primary" type="button" hidden>Nueva partida <kbd>N</kbd></button>
+    </div>
+  </main>
+  <script src="../js/mockData.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/dom.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/game.js"></script>
+  <script src="../js/jugar.js"></script>
+</body>
+</html>

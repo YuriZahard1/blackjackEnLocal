@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ficha detallada de una partida de Blackjack: resultado, puntuaciones y notas.">
+  <title>Detalle de partida · Veintiuno</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-access="private" data-root="../" data-nav="inicio">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html" aria-label="Veintiuno, ir al inicio">
+        <span class="brand__mark" aria-hidden="true">A♠</span>
+        <span>Veintiuno</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="../index.html" data-nav="inicio">Inicio</a>
+        <a href="jugar.html" data-nav="jugar">Jugar</a>
+        <a href="crear.html" data-nav="crear">Registrar partida</a>
+        <button type="button" data-action="rules">Reglas</button>
+        <span class="nav-user" data-user-name>Jugador</span>
+        <button type="button" class="nav-login" data-action="logout">Cerrar sesión</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <nav class="breadcrumb" aria-label="Migas de pan"><a href="../index.html">Inicio</a> / Detalle de partida</nav>
+
+    <article id="detail">
+      <header class="detail-header">
+        <div>
+          <span class="badge"><i></i><span data-field="result"></span></span>
+          <h1 data-field="name">Partida</h1>
+        </div>
+        <p class="eyebrow" data-field="date"></p>
+      </header>
+
+      <div class="detail-grid">
+        <section class="panel" aria-labelledby="detail-title">
+          <h2 id="detail-title" class="sr-only">Resultado de la partida</h2>
+          <div class="scoreline scoreline--large">
+            <div><span>Tú</span><strong data-field="player"></strong></div>
+            <span class="scoreline__vs">VS</span>
+            <div><span>Banca</span><strong data-field="dealer"></strong></div>
+          </div>
+          <dl class="detail-list">
+            <div><dt>Manos jugadas</dt><dd data-field="hands"></dd></div>
+            <div><dt>Barajas en la mesa</dt><dd data-field="decks"></dd></div>
+            <div><dt>Origen</dt><dd data-field="origin"></dd></div>
+          </dl>
+          <div id="detail-note" class="detail-note">
+            <h2>Notas</h2>
+            <p data-field="notes"></p>
+          </div>
+        </section>
+
+        <aside class="panel detail-side" aria-labelledby="actions-title">
+          <h2 id="actions-title">Acciones</h2>
+          <p id="example-note" hidden>Es un dato de ejemplo (mockData.js), por eso no se puede eliminar.</p>
+          <div class="detail-actions">
+            <a class="button button--primary" href="jugar.html">Jugar otra partida</a>
+            <a class="button button--secondary" href="../index.html">Volver al inicio</a>
+            <button id="delete-match" class="button button--danger" type="button">Eliminar partida</button>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <section id="not-found" class="empty-state" aria-labelledby="nf-title" hidden>
+      <span aria-hidden="true">♠</span>
+      <h2 id="nf-title">Partida no encontrada</h2>
+      <p>La partida que buscas no existe o se ha eliminado.</p>
+      <a class="button button--primary" href="../index.html">Volver al inicio</a>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong class="footer-brand">Veintiuno</strong>
+        <p>Blackjack clásico. Nada más.</p>
+      </div>
+      <a href="guia-estilos.html">Guía de estilos</a>
+      <p>Juego responsable · Sin apuestas</p>
+    </div>
+  </footer>
+  <script src="../js/mockData.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/dom.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/detalle.js"></script>
+</body>
+</html>

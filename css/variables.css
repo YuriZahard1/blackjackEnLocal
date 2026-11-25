@@ -1,0 +1,61 @@
+/* ==========================================================================
+   VARIABLES (sistema de diseño)
+   Fuente: guía de estilos de Figma (ver pages/guia-estilos.html)
+   ========================================================================== */
+:root {
+  /* Colores de marca */
+  --color-felt: #0b6e4f;
+  --color-felt-dark: #07543d;
+  --color-felt-deep: #063d2f;
+  --color-felt-glow: #11805e;
+  --color-gold: #d4af37;
+  --color-gold-light: #e8cc6a;
+  --color-night: #081c18;
+  --color-night-soft: #102923;
+  --color-night-deep: #061411;
+  --color-ivory: #f7f3e8;
+  --color-white: #ffffff;
+  --color-ink: #18221f;
+  --color-ink-soft: #53615b;
+  --color-ink-muted: #68756f;
+
+  /* Colores de interfaz */
+  --color-muted: #8fa49d;
+  --color-line: rgba(255, 255, 255, 0.13);
+  --color-line-light: #c9d1ce;
+
+  /* Estados */
+  --color-success: #42c78a;
+  --color-danger: #e65c63;
+  --color-danger-dark: #a5282f;
+  --color-draw: #e4bc4e;
+
+  /* Espaciado (escala base de 8 px) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-12: 96px;
+
+  /* Radios */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-round: 999px;
+
+  /* Sombras */
+  --shadow-low: 0 8px 24px rgba(0, 0, 0, 0.14);
+  --shadow-mid: 0 18px 48px rgba(0, 0, 0, 0.22);
+  --shadow-high: 0 28px 80px rgba(0, 0, 0, 0.35);
+
+  /* Tipografía */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", Arial, sans-serif;
+
+  /* Layout */
+  --container: 1200px;
+  --header-height: 72px;
+  --transition: 0.2s ease;
+}

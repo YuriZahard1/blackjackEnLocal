@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel principal de Veintiuno: tus partidas de Blackjack, estadísticas, búsqueda y filtros.">
+  <title>Inicio · Veintiuno</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-access="private" data-root="" data-nav="inicio">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Veintiuno, ir al inicio">
+        <span class="brand__mark" aria-hidden="true">A♠</span>
+        <span>Veintiuno</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="index.html" data-nav="inicio">Inicio</a>
+        <a href="pages/jugar.html" data-nav="jugar">Jugar</a>
+        <a href="pages/crear.html" data-nav="crear">Registrar partida</a>
+        <button type="button" data-action="rules">Reglas</button>
+        <span class="nav-user" data-user-name>Jugador</span>
+        <button type="button" class="nav-login" data-action="logout">Cerrar sesión</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <p class="eyebrow">Blackjack clásico</p>
+        <h1 id="hero-title">Decide bien.<br><em>Gana con estilo.</em></h1>
+        <p class="hero__copy">La esencia del Blackjack, sin distracciones. Aprende las reglas, juega tu mano y trata de vencer a la banca.</p>
+        <a class="button button--primary" href="pages/jugar.html">Nueva partida <span aria-hidden="true">➤</span></a>
+      </div>
+      <div class="hero-cards" aria-hidden="true">
+        <div class="playing-card"><div class="card-corner"><strong>A</strong><span>♠</span></div><span class="card-suit">♠</span></div>
+        <div class="playing-card playing-card--red"><div class="card-corner"><strong>K</strong><span>♥</span></div><span class="card-suit">♥</span></div>
+        <span class="twenty-one">21</span>
+      </div>
+    </section>
+
+    <section class="dashboard content-shell" aria-labelledby="session-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Tu actividad</p>
+          <h2 id="session-title">Resumen de tu cuenta</h2>
+        </div>
+        <p id="session-note">Tus partidas se guardan en este navegador.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat"><strong data-stat="total">0</strong><span>Partidas jugadas</span></div>
+        <div class="stat stat--win"><strong data-stat="wins">0</strong><span>Ganadas</span></div>
+        <div class="stat stat--loss"><strong data-stat="losses">0</strong><span>Perdidas</span></div>
+        <div class="stat stat--draw"><strong data-stat="draws">0</strong><span>Empatadas</span></div>
+      </div>
+
+      <div class="history-heading">
+        <div>
+          <p class="eyebrow">Tu historial</p>
+          <h2>Partidas recientes</h2>
+        </div>
+        <label class="search" for="search">
+          <span aria-hidden="true">⌕</span>
+          <span class="sr-only">Buscar partida</span>
+          <input id="search" type="search" placeholder="Buscar por nombre..." autocomplete="off">
+        </label>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filtrar partidas por resultado">
+        <button type="button" data-filter="all" class="active" aria-pressed="true">Todas</button>
+        <button type="button" data-filter="Victoria" aria-pressed="false">Victorias</button>
+        <button type="button" data-filter="Derrota" aria-pressed="false">Derrotas</button>
+        <button type="button" data-filter="Empate" aria-pressed="false">Empates</button>
+      </div>
+
+      <p id="live-status" class="sr-only" aria-live="polite"></p>
+
+      <!-- Las tarjetas se inyectan aquí desde js/dashboard.js leyendo mockData.js -->
+      <div id="match-grid" class="match-grid"></div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <span aria-hidden="true">♠</span>
+        <h3>No hay partidas</h3>
+        <p>Prueba con otra búsqueda o cambia el filtro seleccionado.</p>
+        <button id="reset-filters" class="button button--secondary" type="button">Limpiar filtros</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Plantilla de tarjeta: JS la clona y la rellena con los datos -->
+  <template id="match-card-template">
+    <article class="match-card">
+      <div class="match-card__top">
+        <span class="badge"><i></i><span data-field="result"></span></span>
+        <span class="match-card__date" data-field="date"></span>
+      </div>
+      <h3 data-field="name"></h3>
+      <div class="scoreline">
+        <div><span>Tú</span><strong data-field="player"></strong></div>
+        <span class="scoreline__vs">VS</span>
+        <div><span>Banca</span><strong data-field="dealer"></strong></div>
+      </div>
+      <div class="match-card__bottom">
+        <span data-field="hands"></span>
+        <a class="match-card__link" data-field="link" href="pages/detalle.html">Ver detalle <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+  </template>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong class="footer-brand">Veintiuno</strong>
+        <p>Blackjack clásico. Nada más.</p>
+      </div>
+      <a href="pages/guia-estilos.html">Guía de estilos</a>
+      <p>Juego responsable · Sin apuestas</p>
+    </div>
+  </footer>
+
+  <script src="js/mockData.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/dom.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

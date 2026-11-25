@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema de diseño de Veintiuno: color, tipografía, botones, formularios y componentes.">
+  <title>Guía de estilos · Veintiuno</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-access="private" data-root="../" data-nav="guia">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html" aria-label="Veintiuno, ir al inicio">
+        <span class="brand__mark" aria-hidden="true">A♠</span>
+        <span>Veintiuno</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <a href="../index.html" data-nav="inicio">Inicio</a>
+        <a href="jugar.html" data-nav="jugar">Jugar</a>
+        <a href="crear.html" data-nav="crear">Registrar partida</a>
+        <button type="button" data-action="rules">Reglas</button>
+        <span class="nav-user" data-user-name>Jugador</span>
+        <button type="button" class="nav-login" data-action="logout">Cerrar sesión</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell style-guide">
+    <header class="style-heading">
+      <p class="eyebrow">Sistema de diseño</p>
+      <h1>Guía de estilos</h1>
+      <p>Fundamentos y componentes de la experiencia Veintiuno. Todos los valores salen de las variables de <code>css/variables.css</code>.</p>
+    </header>
+    <section aria-labelledby="g-color">
+      <h2 id="g-color">Paleta de color</h2>
+      <div class="swatches">
+          <figure class="swatch"><span class="swatch__color swatch__color--felt"></span><strong>Fieltro</strong><code>var(--color-felt)</code></figure>
+          <figure class="swatch"><span class="swatch__color swatch__color--gold"></span><strong>Oro</strong><code>var(--color-gold)</code></figure>
+          <figure class="swatch"><span class="swatch__color swatch__color--night"></span><strong>Noche</strong><code>var(--color-night)</code></figure>
+          <figure class="swatch"><span class="swatch__color swatch__color--ivory"></span><strong>Marfil</strong><code>var(--color-ivory)</code></figure>
+          <figure class="swatch"><span class="swatch__color swatch__color--success"></span><strong>Victoria</strong><code>var(--color-success)</code></figure>
+          <figure class="swatch"><span class="swatch__color swatch__color--danger"></span><strong>Derrota</strong><code>var(--color-danger)</code></figure>
+      </div>
+    </section>
+    <section aria-labelledby="g-type">
+      <h2 id="g-type">Tipografía</h2>
+      <p>Títulos: Playfair Display · Texto: Inter.</p>
+      <div class="type-samples">
+        <p class="eyebrow">Eyebrow</p>
+        <p class="sample-h1">Título principal</p>
+        <p class="sample-h2">Título de sección</p>
+        <p class="sample-h3">Título de tarjeta</p>
+        <p>Texto de párrafo para contenidos y descripciones.</p>
+      </div>
+    </section>
+    <section aria-labelledby="g-btn">
+      <h2 id="g-btn">Botones</h2>
+      <div class="component-row">
+        <button class="button button--primary" type="button">Primario</button>
+        <button class="button button--secondary" type="button">Secundario</button>
+        <button class="button button--danger" type="button">Peligro</button>
+        <button class="button button--primary" type="button" disabled>Deshabilitado</button>
+      </div>
+    </section>
+    <section aria-labelledby="g-form">
+      <h2 id="g-form">Campos de formulario</h2>
+      <div class="style-fields">
+        <div class="field"><label for="g-normal">Estado normal</label><input id="g-normal" type="text" placeholder="Escribe aquí"></div>
+        <div class="field field--error"><label for="g-error">Estado de error</label><input id="g-error" type="text" value="dato" aria-invalid="true" aria-describedby="g-error-m"><p class="field__message" id="g-error-m"><span aria-hidden="true">!</span> Revisa este campo.</p></div>
+        <div class="field field--success"><label for="g-ok">Estado correcto</label><input id="g-ok" type="text" value="correcto" aria-describedby="g-ok-m"><p class="field__message" id="g-ok-m"><span aria-hidden="true">✓</span> El campo es válido.</p></div>
+      </div>
+    </section>
+    <section aria-labelledby="g-cards">
+      <h2 id="g-cards">Cartas y estados</h2>
+      <div class="component-row">
+        <div class="playing-card"><div class="card-corner"><strong>A</strong><span>♠</span></div><span class="card-suit">♠</span></div>
+        <div class="playing-card playing-card--red"><div class="card-corner"><strong>Q</strong><span>♥</span></div><span class="card-suit">♥</span></div>
+        <span class="badge badge--win"><i></i>Victoria</span>
+        <span class="badge badge--loss"><i></i>Derrota</span>
+        <span class="badge badge--draw"><i></i>Empate</span>
+      </div>
+    </section>
+    <section aria-labelledby="g-space">
+      <h2 id="g-space">Espaciado, radios y sombras</h2>
+      <p>Escala base de 8 px: 8, 16, 24, 32, 48, 64 y 96. Radios: 6, 12, 20 y redondo. Sombras: baja, media y elevada. Puntos de ruptura: 1099 px, 767 px y 479 px.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong class="footer-brand">Veintiuno</strong>
+        <p>Blackjack clásico. Nada más.</p>
+      </div>
+      <a href="guia-estilos.html">Guía de estilos</a>
+      <p>Juego responsable · Sin apuestas</p>
+    </div>
+  </footer>
+  <script src="../js/mockData.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/dom.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/layout.js"></script>
+</body>
+</html>
